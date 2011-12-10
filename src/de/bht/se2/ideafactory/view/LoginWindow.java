@@ -28,6 +28,7 @@ public class LoginWindow extends Window {
         setModal(true);
 
         setWidth("50%");
+        setHeight("50%");
 
         center();
 
@@ -49,8 +50,8 @@ public class LoginWindow extends Window {
         vl.addComponent(nameLayout);
         vl.addComponent(passwordLayout);
         vl.addComponent(loginButton);
-
         addComponent(vl);
+        
 
         loginButton.addListener(new ClickListener() {
 
