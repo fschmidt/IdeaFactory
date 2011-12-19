@@ -27,7 +27,6 @@ public class EclipseLinkIdeaDAO {
         tx.begin();
 
         em.persist(newIdea);
-
         tx.commit();
 
         return true;

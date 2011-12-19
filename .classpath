@@ -15,5 +15,8 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Christoph/Documents/Studium/Software Engineering II/IdeaFactory/libs/derby.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Christoph/Documents/Studium/Software Engineering II/IdeaFactory/libs/eclipselink.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Christoph/Documents/Studium/Software Engineering II/IdeaFactory/libs/javax.persistence_2.0.3.v201010191057.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

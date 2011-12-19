@@ -1,5 +1,9 @@
 package de.bht.se2.ideafactory.view;
 
+import java.util.Arrays;
+import java.util.List;
+
+import com.vaadin.data.Item;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.HorizontalLayout;
@@ -11,6 +15,7 @@ import com.vaadin.ui.Window;
 import com.vaadin.ui.Button.ClickEvent;
 
 import de.bht.se2.ideafactory.dao.EclipseLinkIdeaDAO;
+import de.bht.se2.ideafactory.datasources.IdeaContainer;
 import de.bht.se2.ideafactory.model.Idea;
 
 public class CreateIdeaWindow extends Window {
@@ -24,7 +29,7 @@ public class CreateIdeaWindow extends Window {
 	private Button submit;
 	EclipseLinkIdeaDAO dao = new EclipseLinkIdeaDAO();
 
-	public CreateIdeaWindow() {
+	public CreateIdeaWindow()  {
 
 		window = this;
 		setModal(true);
@@ -86,5 +91,9 @@ public class CreateIdeaWindow extends Window {
 			}
 		});
 	}
+	
+
+	
+
 
 }

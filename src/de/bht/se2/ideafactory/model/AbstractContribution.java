@@ -1,5 +1,7 @@
 package de.bht.se2.ideafactory.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,7 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 
 @Entity
-public class AbstractContribution implements IContribution {
+public class AbstractContribution implements IContribution, Serializable {
+	
+	private static final long serialVersionUID = -1536665818542021119L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
