@@ -8,7 +8,7 @@
 		<param-value>false</param-value>
 	</context-param>
 	<servlet>
-		<servlet-name>Ideenportal Application</servlet-name>
+		<servlet-name>IdeaFactory Application</servlet-name>
 		<servlet-class>com.vaadin.terminal.gwt.server.ApplicationServlet</servlet-class>
 		<init-param>
 			<description>
@@ -18,7 +18,7 @@
 		</init-param>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>Ideenportal Application</servlet-name>
+		<servlet-name>IdeaFactory Application</servlet-name>
 		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>

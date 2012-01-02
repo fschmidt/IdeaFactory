@@ -17,6 +17,6 @@ public final class PersistenceManager {
 
     public EntityManagerFactory createEntityManagerFactory() {
         return Persistence
-                .createEntityManagerFactory("ideafactoryPersistenceUnit");
+                .createEntityManagerFactory("ideafactoryPersistenceUnit2");
     }
 }

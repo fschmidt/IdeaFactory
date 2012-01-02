@@ -12,8 +12,9 @@ import javax.persistence.Lob;
 public class AbstractContribution implements IContribution, Serializable {
 	
 	private static final long serialVersionUID = -1536665818542021119L;
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+        @GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private IPortalUser creator;
 	private String name;

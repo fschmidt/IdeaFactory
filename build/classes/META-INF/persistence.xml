@@ -2,10 +2,10 @@
 <persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 	version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
-	<persistence-unit name="ideafactoryPersistenceUnit" transaction-type="RESOURCE_LOCAL">
-	<class>de.bht.se2.ideafactory.model.PortalUser</class>
-		<class>de.bht.se2.ideafactory.model.AbstractContribution</class>
+	<persistence-unit name="ideafactoryPersistenceUnit2" transaction-type="RESOURCE_LOCAL">
+		<class>de.bht.se2.ideafactory.model.PortalUser</class>
 		<class>de.bht.se2.ideafactory.model.Idea</class>
+		<class>de.bht.se2.ideafactory.model.AbstractContribution</class>
 		<class>de.bht.se2.ideafactory.model.Comment</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />

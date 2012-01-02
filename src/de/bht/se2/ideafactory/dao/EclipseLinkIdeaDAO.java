@@ -13,93 +13,97 @@ import de.bht.se2.ideafactory.util.PersistenceManager;
 public class EclipseLinkIdeaDAO {
 
     EntityManagerFactory emf;
-    EntityManager        em;
+    EntityManager em;
 
     public EclipseLinkIdeaDAO() {
-        emf = PersistenceManager.getInstance().createEntityManagerFactory();
-        em = emf.createEntityManager();
+	emf = PersistenceManager.getInstance().createEntityManagerFactory();
+	em = emf.createEntityManager();
     }
 
     public boolean createIdea(Idea newIdea) {
 
-        EntityTransaction tx = em.getTransaction();
+	EntityTransaction tx = em.getTransaction();
 
-        tx.begin();
+	tx.begin();
 
-        em.persist(newIdea);
-        tx.commit();
+	em.persist(newIdea);
+	tx.commit();
 
-        return true;
+	return true;
     }
 
     public boolean update(Idea idea) {
 
-        try {
-            EntityManagerFactory emf = PersistenceManager.getInstance()
-                    .createEntityManagerFactory();
-            EntityManager em = emf.createEntityManager();
+	try {
+	    EntityManagerFactory emf = PersistenceManager.getInstance()
+		    .createEntityManagerFactory();
+	    EntityManager em = emf.createEntityManager();
 
-            EntityTransaction tx = em.getTransaction();
-            tx.begin();
+	    EntityTransaction tx = em.getTransaction();
+	    tx.begin();
 
-            em.merge(idea);
+	    em.merge(idea);
 
-            tx.commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
+	    tx.commit();
+	} catch (Exception e) {
+	    e.printStackTrace();
+	    return false;
+	}
+	closeConnections();
+	return true;
     }
 
     public boolean delete(Idea idea) {
-        try {
+	try {
 
-            EntityManagerFactory emf = PersistenceManager.getInstance()
-                    .createEntityManagerFactory();
-            EntityManager em = emf.createEntityManager();
+	    EntityManagerFactory emf = PersistenceManager.getInstance()
+		    .createEntityManagerFactory();
+	    EntityManager em = emf.createEntityManager();
 
-            EntityTransaction tx = em.getTransaction();
-            tx.begin();
+	    EntityTransaction tx = em.getTransaction();
+	    tx.begin();
 
-            em.remove(idea);
+	    em.remove(idea);
 
-            tx.commit();
+	    tx.commit();
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
+	} catch (Exception e) {
+	    e.printStackTrace();
+	    return false;
+	}
+	closeConnections();
+	return true;
     }
 
     public List<Idea> getAll() {
-        ArrayList<Idea> ideas = new ArrayList<Idea>();
+	ArrayList<Idea> ideas = new ArrayList<Idea>();
 
-        EntityManagerFactory emf = PersistenceManager.getInstance()
-                .createEntityManagerFactory();
-        EntityManager em = emf.createEntityManager();
+	EntityManagerFactory emf = PersistenceManager.getInstance()
+		.createEntityManagerFactory();
+	EntityManager em = emf.createEntityManager();
 
-        EntityTransaction tx = em.getTransaction();
-        tx.begin();
+	EntityTransaction tx = em.getTransaction();
+	tx.begin();
 
-        List<?> fetchedIdeas = em.createQuery("select a from Idea a")
-                .getResultList();
+	List<?> fetchedIdeas = em.createQuery("select a from Idea a")
+		.getResultList();
 
-        for (Object fetchedIdea : fetchedIdeas) {
-            if (fetchedIdea instanceof Idea) {
-                Idea idea = (Idea) fetchedIdea;
-                ideas.add(idea);
-            }
-        }
+	for (Object fetchedIdea : fetchedIdeas) {
+	    if (fetchedIdea instanceof Idea) {
+		Idea idea = (Idea) fetchedIdea;
+		ideas.add(idea);
+	    }
+	}
 
-        tx.commit();
+	tx.commit();
 
-        return ideas;
+	closeConnections();
+
+	return ideas;
     }
 
     public void closeConnections() {
-        em.close();
-        emf.close();
+	em.close();
+	emf.close();
     }
 }
