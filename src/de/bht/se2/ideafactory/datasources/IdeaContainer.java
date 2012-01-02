@@ -28,6 +28,16 @@ public class IdeaContainer extends BeanItemContainer<Idea> {
 
 	IdeaContainer c = null;
 
+	try {
+	    c = new IdeaContainer();
+	} catch (InstantiationException e2) {
+	    // TODO Auto-generated catch block
+	    e2.printStackTrace();
+	} catch (IllegalAccessException e2) {
+	    // TODO Auto-generated catch block
+	    e2.printStackTrace();
+	}
+	
 	EclipseLinkIdeaDAO eli = new EclipseLinkIdeaDAO();
 
 	List<Idea> ideas = eli.getAll();
