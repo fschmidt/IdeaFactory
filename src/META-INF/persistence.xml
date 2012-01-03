@@ -2,7 +2,7 @@
 <persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 	version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
-	<persistence-unit name="ideafactoryPersistenceUnit2" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="ideafactoryPersistenceUnit" transaction-type="RESOURCE_LOCAL">
 		<class>de.bht.se2.ideafactory.model.PortalUser</class>
 		<class>de.bht.se2.ideafactory.model.Idea</class>
 		<class>de.bht.se2.ideafactory.model.AbstractContribution</class>
@@ -14,7 +14,7 @@
 			<property name="javax.persistence.jdbc.password" value="adminpw" />
 
 			<!-- EclipseLink should create the database schema automatically -->
-			<property name="eclipselink.ddl-generation" value="create-tables" />
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
 			<property name="eclipselink.ddl-generation.output-mode"
 				value="database" />
 			<property name="eclipselink.orm.throw.exceptions" value="true" />

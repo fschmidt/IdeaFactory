@@ -141,6 +141,6 @@ public class IdeaFactoryApplication extends Application implements
 	
 	 private void addNewContact() {
          setMainComponent((Component) getListView());
-         ideaForm.addContact();
+         ideaForm.addIdea();
      }
 }

@@ -28,7 +28,7 @@ public class IdeaForm extends Form implements ClickListener {
 	private Button cancelComment = new Button("Cancel", (ClickListener) this);
 	private IdeaFactoryApplication app;
 	private Idea newIdea = null;
-	public boolean newContactMode = false;
+	public boolean newIdeaMode = false;
 	HorizontalLayout footer;
 	private TextArea area = new TextArea("insert comment");
 
@@ -61,34 +61,34 @@ public class IdeaForm extends Form implements ClickListener {
 	public void buttonClick(ClickEvent event) {
 
 		Button source = event.getButton();
-		EclipseLinkIdeaDAO dao = new EclipseLinkIdeaDAO();
+		
 
 		if (source == save) {
 			/* If the given input is not valid there is no point in continuing */
-			if (!isValid()) {
-				return;
-			}
-			if (newContactMode) {
+//			if (!isValid()) {
+//				return;
+//			}
+			if (newIdeaMode) {
 				/* We need to add the new person to the container */
 				System.out.println("in contact mode");
 				Item addedItem = app.getDataSource().addItem(newIdea);
 
+				// add idea to db
 				setItemDataSource(addedItem);
-				dao.createIdea(newIdea);
+				
 
 				getWindow().showNotification(
 						"New Idea:  " + app.getDataSource().getItem(newIdea)
 								+ "added", Notification.TYPE_TRAY_NOTIFICATION);
 
-				newContactMode = false;
+				newIdeaMode = false;
 
 			}
-			dao.update(newIdea);
-			commit();
+			// update idea in db
 			setReadOnly(true);
 		} else if (source == cancel) {
-			if (newContactMode) {
-				newContactMode = false;
+			if (newIdeaMode) {
+				newIdeaMode = false;
 				setItemDataSource(null);
 			} else {
 				discard();
@@ -101,7 +101,8 @@ public class IdeaForm extends Form implements ClickListener {
 		} else if (source == cancelComment){
 			setComment(true);
 		} else if (source == saveComment){
-			dao.update(newIdea);
+			// update idea in db
+//			dao.update(newIdea);
 			commit();
 			setReadOnly(true);
 		}
@@ -141,11 +142,11 @@ public class IdeaForm extends Form implements ClickListener {
 		area.setVisible(boo);
 	}
 
-	public void addContact() {
+	public void addIdea() {
 		// Create a temporary item for the form
 		newIdea = new Idea();
 		setItemDataSource(new BeanItem<Idea>(newIdea));
-		newContactMode = true;
+		newIdeaMode = true;
 		setReadOnly(false);
 	}
 

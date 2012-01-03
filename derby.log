@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
 2012-01-02 21:36:08.306 GMT:
  Booting Derby version The Apache Software Foundation - Apache Derby - 10.6.1.0 - (938214): instance a816c00e-0134-a059-cfb4-000002c8d198 
-on database directory C:\Users\Frank\vaadin_WS\IdeaFactory\db   with class loader sun.misc.Launcher$AppClassLoader@5acac268
+on database directory D:\EclipseVaadin\workspace\IdeaFactory\db   with class loader sun.misc.Launcher$AppClassLoader@5acac268
 
 Database Class Loader started - derby.database.classpath=''
