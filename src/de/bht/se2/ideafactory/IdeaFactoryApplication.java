@@ -19,7 +19,7 @@ import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 import com.vaadin.ui.Window.CloseEvent;
 
-import de.bht.se2.ideafactory.dao.EclipseLinkPortalUserDAO;
+import de.bht.se2.ideafactory.dao.EclipseLinkPortalUserDao;
 import de.bht.se2.ideafactory.datasources.IdeaContainer;
 import de.bht.se2.ideafactory.model.PortalUser;
 import de.bht.se2.ideafactory.view.CommentForm;
@@ -58,7 +58,7 @@ public class IdeaFactoryApplication extends Application implements
     private void buildLayout() {
 
 	try {
-	    currentUser = EclipseLinkPortalUserDAO.createInstance().getAll()
+	    currentUser = new EclipseLinkPortalUserDao().getAll()
 		    .get(0);
 	} catch (Exception ex) {
 	    // TODO do something ... fail

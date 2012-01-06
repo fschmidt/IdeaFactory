@@ -7,8 +7,8 @@ import com.vaadin.data.Item;
 import com.vaadin.data.util.BeanItem;
 import com.vaadin.data.util.BeanItemContainer;
 
-import de.bht.se2.ideafactory.dao.EclipseLinkIdeaDAO;
-import de.bht.se2.ideafactory.dao.EclipseLinkPortalUserDAO;
+import de.bht.se2.ideafactory.dao.EclipseLinkIdeaDao;
+import de.bht.se2.ideafactory.dao.EclipseLinkPortalUserDao;
 import de.bht.se2.ideafactory.model.Comment;
 import de.bht.se2.ideafactory.model.Idea;
 import de.bht.se2.ideafactory.model.PortalUser;
@@ -25,12 +25,12 @@ public class IdeaContainer extends BeanItemContainer<Idea> {
 	    "Name", "Creator", "Short Decription", "Detailed Description",
 	    "Specifications", "Comments" };
 
-    private final EclipseLinkIdeaDAO eli;
+    private final EclipseLinkIdeaDao eli;
 
     public IdeaContainer() throws InstantiationException,
 	    IllegalAccessException {
 	super(Idea.class);
-	eli = EclipseLinkIdeaDAO.createInstance();
+	eli = new EclipseLinkIdeaDao();
 
     }
 
@@ -65,7 +65,7 @@ public class IdeaContainer extends BeanItemContainer<Idea> {
 	    user.setName("Schmidt");
 	    user.setPassword("password");
 	    user.setLoginName("fschmidt");
-	    EclipseLinkPortalUserDAO.createInstance().create(user);
+	    new EclipseLinkPortalUserDao().create(user);
 	    System.out.println("User:" + user);
 	}
 
@@ -81,7 +81,7 @@ public class IdeaContainer extends BeanItemContainer<Idea> {
 	}
 
 	// try fetching ideas from the db
-	EclipseLinkIdeaDAO eli1 = EclipseLinkIdeaDAO.createInstance();
+	EclipseLinkIdeaDao eli1 = new EclipseLinkIdeaDao();
 
 	List<Idea> ideas = null;
 
@@ -122,7 +122,7 @@ public class IdeaContainer extends BeanItemContainer<Idea> {
 		Comment newComment = new Comment(user, p);
 		newComment.setText("test");
 		newComment.setTitle("title");
-		
+
 		eli1.create(p);
 	    }
 	} catch (InstantiationException e1) {

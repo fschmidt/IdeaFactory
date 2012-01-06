@@ -1,10 +1,7 @@
 package de.bht.se2.ideafactory.view;
 
-import java.util.Arrays;
-import java.util.List;
-
-import com.vaadin.data.Item;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
@@ -12,10 +9,8 @@ import com.vaadin.ui.TextArea;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
-import com.vaadin.ui.Button.ClickEvent;
 
-import de.bht.se2.ideafactory.dao.EclipseLinkIdeaDAO;
-import de.bht.se2.ideafactory.datasources.IdeaContainer;
+import de.bht.se2.ideafactory.dao.EclipseLinkIdeaDao;
 import de.bht.se2.ideafactory.model.Idea;
 
 public class CreateIdeaWindow extends Window {
@@ -27,7 +22,7 @@ public class CreateIdeaWindow extends Window {
 	private TextArea detailedDescription;
 	private TextField specification;
 	private Button submit;
-	EclipseLinkIdeaDAO dao = EclipseLinkIdeaDAO.createInstance();
+	EclipseLinkIdeaDao dao = new EclipseLinkIdeaDao();
 
 	public CreateIdeaWindow()  {
 

@@ -13,7 +13,6 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.TextArea;
 
 import de.bht.se2.ideafactory.IdeaFactoryApplication;
-import de.bht.se2.ideafactory.datasources.IdeaContainer;
 import de.bht.se2.ideafactory.model.Idea;
 import de.bht.se2.ideafactory.model.PortalUser;
 
@@ -61,6 +60,7 @@ public class IdeaForm extends Form implements ClickListener {
 
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public void buttonClick(ClickEvent event) {
 
@@ -106,8 +106,7 @@ public class IdeaForm extends Form implements ClickListener {
 	newIdeaMode = false;
 	if (newDataSource != null) {
 
-	    List<Object> orderedProperties = Arrays
-		    .asList(NATURAL_COL_ORDER);
+	    List<Object> orderedProperties = Arrays.asList(NATURAL_COL_ORDER);
 	    super.setItemDataSource(newDataSource, orderedProperties);
 
 	    setReadOnly(true);

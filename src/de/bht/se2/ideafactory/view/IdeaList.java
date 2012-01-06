@@ -9,10 +9,8 @@ import de.bht.se2.ideafactory.datasources.IdeaContainer;
 public class IdeaList extends Table {
 
     private static final long serialVersionUID = 1692212555340482748L;
-    private final IdeaFactoryApplication app;
 
     public IdeaList(IdeaFactoryApplication app) {
-	this.app = app;
 	setSizeFull();
 	setContainerDataSource(app.getDataSource());
 	setVisibleColumns(IdeaContainer.NATURAL_COL_ORDER);
