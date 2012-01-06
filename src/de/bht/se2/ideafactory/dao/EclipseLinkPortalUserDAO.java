@@ -7,29 +7,29 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 
-import de.bht.se2.ideafactory.model.Idea;
+import de.bht.se2.ideafactory.model.PortalUser;
 import de.bht.se2.ideafactory.util.PersistenceManager;
 
-public class EclipseLinkIdeaDAO {
+public class EclipseLinkPortalUserDAO {
 
-    private static EclipseLinkIdeaDAO instance = null;
+    private static EclipseLinkPortalUserDAO instance = null;
     EntityManagerFactory emf;
     EntityManager em;
 
-    private EclipseLinkIdeaDAO() {
+    private EclipseLinkPortalUserDAO() {
 	emf = PersistenceManager.getInstance().createEntityManagerFactory();
 	em = emf.createEntityManager();
     }
 
-    public static EclipseLinkIdeaDAO createInstance() {
+    public static EclipseLinkPortalUserDAO createInstance() {
 	if (instance != null) {
 	    instance.closeConnections();
 	}
-	instance = new EclipseLinkIdeaDAO();
+	instance = new EclipseLinkPortalUserDAO();
 	return instance;
     }
 
-    public boolean create(Idea idea) {
+    public boolean create(PortalUser user) {
 	EntityManagerFactory emf = PersistenceManager.getInstance()
 		.createEntityManagerFactory();
 	EntityManager em = emf.createEntityManager();
@@ -38,13 +38,13 @@ public class EclipseLinkIdeaDAO {
 
 	tx.begin();
 
-	em.persist(idea);
+	em.persist(user);
 	tx.commit();
 
 	return true;
     }
 
-    public boolean update(Idea idea) {
+    public boolean update(PortalUser user) {
 
 	try {
 	    EntityManagerFactory emf = PersistenceManager.getInstance()
@@ -54,7 +54,7 @@ public class EclipseLinkIdeaDAO {
 	    EntityTransaction tx = em.getTransaction();
 	    tx.begin();
 
-	    em.merge(idea);
+	    em.merge(user);
 
 	    tx.commit();
 
@@ -65,7 +65,7 @@ public class EclipseLinkIdeaDAO {
 	return true;
     }
 
-    public boolean delete(Idea idea) {
+    public boolean delete(PortalUser user) {
 	try {
 
 	    EntityManagerFactory emf = PersistenceManager.getInstance()
@@ -75,7 +75,7 @@ public class EclipseLinkIdeaDAO {
 	    EntityTransaction tx = em.getTransaction();
 	    tx.begin();
 
-	    em.remove(idea);
+	    em.remove(user);
 
 	    tx.commit();
 
@@ -86,28 +86,28 @@ public class EclipseLinkIdeaDAO {
 	return true;
     }
 
-    public List<Idea> getAll() {
+    public List<PortalUser> getAll() {
 	EntityManagerFactory emf = PersistenceManager.getInstance()
 		.createEntityManagerFactory();
 	EntityManager em = emf.createEntityManager();
-	ArrayList<Idea> ideas = new ArrayList<Idea>();
+	ArrayList<PortalUser> users = new ArrayList<PortalUser>();
 
 	EntityTransaction tx = em.getTransaction();
 	tx.begin();
 
-	List<?> fetchedIdeas = em.createQuery("select a from Idea a")
+	List<?> fetchedComments = em.createQuery("select a from PortalUser a")
 		.getResultList();
 
-	for (Object fetchedIdea : fetchedIdeas) {
-	    if (fetchedIdea instanceof Idea) {
-		Idea idea = (Idea) fetchedIdea;
-		ideas.add(idea);
+	for (Object fetchedIdea : fetchedComments) {
+	    if (fetchedIdea instanceof PortalUser) {
+		PortalUser user = (PortalUser) fetchedIdea;
+		users.add(user);
 	    }
 	}
 
 	tx.commit();
 
-	return ideas;
+	return users;
     }
 
     private void closeConnections() {

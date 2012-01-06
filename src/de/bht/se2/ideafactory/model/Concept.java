@@ -2,17 +2,16 @@ package de.bht.se2.ideafactory.model;
 
 import java.util.ArrayList;
 
-public class Concept extends AbstractContribution{
+public class Concept {
 
-    private static final long serialVersionUID = -6741509528557025845L;
-	private ArrayList<IPortalUser> contributors;
+	private ArrayList<PortalUser> contributors;
 	private ArrayList<Idea> ideas;
 
-	public void addContributor(IPortalUser user) {
+	public void addContributor(PortalUser user) {
 		contributors.add(user);
 	}
 
-	public void removeContributor(IPortalUser user) {
+	public void removeContributor(PortalUser user) {
 		contributors.remove(user);
 	}
 

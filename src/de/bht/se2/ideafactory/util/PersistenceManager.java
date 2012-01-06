@@ -1,22 +1,24 @@
 package de.bht.se2.ideafactory.util;
 
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public final class PersistenceManager {
-    private static final PersistenceManager instance = new PersistenceManager();
+    private static PersistenceManager instance = null;
 
     private PersistenceManager() {
 
     }
 
     public static PersistenceManager getInstance() {
-        return instance;
+	if (instance == null) {
+	    instance = new PersistenceManager();
+	}
+	return instance;
     }
 
     public EntityManagerFactory createEntityManagerFactory() {
-        return Persistence
-                .createEntityManagerFactory("ideafactoryPersistenceUnit");
+	return Persistence
+		.createEntityManagerFactory("ideafactoryPersistenceUnit");
     }
 }

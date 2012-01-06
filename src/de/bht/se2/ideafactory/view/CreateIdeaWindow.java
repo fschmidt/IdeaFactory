@@ -27,7 +27,7 @@ public class CreateIdeaWindow extends Window {
 	private TextArea detailedDescription;
 	private TextField specification;
 	private Button submit;
-	EclipseLinkIdeaDAO dao = new EclipseLinkIdeaDAO();
+	EclipseLinkIdeaDAO dao = EclipseLinkIdeaDAO.createInstance();
 
 	public CreateIdeaWindow()  {
 
@@ -82,10 +82,8 @@ public class CreateIdeaWindow extends Window {
 				newIdea.setShortDecription(shortDecription.toString());
 				newIdea.setDetailedDescription(detailedDescription.toString());
 				newIdea.setSpecifications(specification.toString());
-				newIdea.setCreator(null);
-				newIdea.setId(null);
 				
-				dao.createIdea(newIdea);
+				dao.create(newIdea);
 				window.close();
 				
 			}

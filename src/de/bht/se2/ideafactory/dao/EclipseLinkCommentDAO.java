@@ -1,35 +1,32 @@
 package de.bht.se2.ideafactory.dao;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 
-import de.bht.se2.ideafactory.model.Idea;
+import de.bht.se2.ideafactory.model.Comment;
 import de.bht.se2.ideafactory.util.PersistenceManager;
 
-public class EclipseLinkIdeaDAO {
+public class EclipseLinkCommentDAO {
 
-    private static EclipseLinkIdeaDAO instance = null;
+    private static EclipseLinkCommentDAO instance = null;
     EntityManagerFactory emf;
     EntityManager em;
 
-    private EclipseLinkIdeaDAO() {
+    private EclipseLinkCommentDAO() {
 	emf = PersistenceManager.getInstance().createEntityManagerFactory();
 	em = emf.createEntityManager();
     }
 
-    public static EclipseLinkIdeaDAO createInstance() {
+    public static EclipseLinkCommentDAO createInstance() {
 	if (instance != null) {
 	    instance.closeConnections();
 	}
-	instance = new EclipseLinkIdeaDAO();
+	instance = new EclipseLinkCommentDAO();
 	return instance;
     }
 
-    public boolean create(Idea idea) {
+    public boolean create(Comment comment) {
 	EntityManagerFactory emf = PersistenceManager.getInstance()
 		.createEntityManagerFactory();
 	EntityManager em = emf.createEntityManager();
@@ -38,13 +35,13 @@ public class EclipseLinkIdeaDAO {
 
 	tx.begin();
 
-	em.persist(idea);
+	em.persist(comment);
 	tx.commit();
 
 	return true;
     }
 
-    public boolean update(Idea idea) {
+    public boolean update(Comment comment) {
 
 	try {
 	    EntityManagerFactory emf = PersistenceManager.getInstance()
@@ -54,7 +51,7 @@ public class EclipseLinkIdeaDAO {
 	    EntityTransaction tx = em.getTransaction();
 	    tx.begin();
 
-	    em.merge(idea);
+	    em.merge(comment);
 
 	    tx.commit();
 
@@ -65,7 +62,7 @@ public class EclipseLinkIdeaDAO {
 	return true;
     }
 
-    public boolean delete(Idea idea) {
+    public boolean delete(Comment comment) {
 	try {
 
 	    EntityManagerFactory emf = PersistenceManager.getInstance()
@@ -75,7 +72,7 @@ public class EclipseLinkIdeaDAO {
 	    EntityTransaction tx = em.getTransaction();
 	    tx.begin();
 
-	    em.remove(idea);
+	    em.remove(comment);
 
 	    tx.commit();
 
@@ -86,29 +83,29 @@ public class EclipseLinkIdeaDAO {
 	return true;
     }
 
-    public List<Idea> getAll() {
-	EntityManagerFactory emf = PersistenceManager.getInstance()
-		.createEntityManagerFactory();
-	EntityManager em = emf.createEntityManager();
-	ArrayList<Idea> ideas = new ArrayList<Idea>();
-
-	EntityTransaction tx = em.getTransaction();
-	tx.begin();
-
-	List<?> fetchedIdeas = em.createQuery("select a from Idea a")
-		.getResultList();
-
-	for (Object fetchedIdea : fetchedIdeas) {
-	    if (fetchedIdea instanceof Idea) {
-		Idea idea = (Idea) fetchedIdea;
-		ideas.add(idea);
-	    }
-	}
-
-	tx.commit();
-
-	return ideas;
-    }
+//    public List<Comment> getAll(Idea idea) {
+//	EntityManagerFactory emf = PersistenceManager.getInstance()
+//		.createEntityManagerFactory();
+//	EntityManager em = emf.createEntityManager();
+//	ArrayList<Idea> ideas = new ArrayList<Idea>();
+//
+//	EntityTransaction tx = em.getTransaction();
+//	tx.begin();
+//
+//	List<?> fetchedComments = em.createQuery("select a from Comment a")
+//		.getResultList();
+//
+//	for (Object fetchedIdea : fetchedComments) {
+//	    if (fetchedIdea instanceof Idea) {
+//		Idea idea = (Idea) fetchedIdea;
+//		ideas.add(idea);
+//	    }
+//	}
+//
+//	tx.commit();
+//
+//	return ideas;
+//    }
 
     private void closeConnections() {
 	em.close();
