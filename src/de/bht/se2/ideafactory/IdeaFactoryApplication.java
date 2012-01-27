@@ -58,7 +58,7 @@ public class IdeaFactoryApplication extends Application implements
     private void buildLayout() {
 
 	try {
-	    currentUser = new EclipseLinkPortalUserDao().getAll()
+	    currentUser = EclipseLinkPortalUserDao.createInstance().getAll()
 		    .get(0);
 	} catch (Exception ex) {
 	    // TODO do something ... fail
@@ -160,7 +160,7 @@ public class IdeaFactoryApplication extends Application implements
     }
 
     private void addNewIdea() {
-	setMainComponent((Component) getListView());
+	showListView();
 	ideaForm.addIdea(currentUser);
     }
 

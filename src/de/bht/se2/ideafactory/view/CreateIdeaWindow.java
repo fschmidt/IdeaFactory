@@ -22,7 +22,7 @@ public class CreateIdeaWindow extends Window {
 	private TextArea detailedDescription;
 	private TextField specification;
 	private Button submit;
-	EclipseLinkIdeaDao dao = new EclipseLinkIdeaDao();
+	EclipseLinkIdeaDao dao = EclipseLinkIdeaDao.createInstance();
 
 	public CreateIdeaWindow()  {
 

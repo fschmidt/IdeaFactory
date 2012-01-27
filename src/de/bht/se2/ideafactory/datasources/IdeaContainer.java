@@ -30,7 +30,7 @@ public class IdeaContainer extends BeanItemContainer<Idea> {
     public IdeaContainer() throws InstantiationException,
 	    IllegalAccessException {
 	super(Idea.class);
-	eli = new EclipseLinkIdeaDao();
+	eli = EclipseLinkIdeaDao.createInstance();
 
     }
 
@@ -65,7 +65,9 @@ public class IdeaContainer extends BeanItemContainer<Idea> {
 	    user.setName("Schmidt");
 	    user.setPassword("password");
 	    user.setLoginName("fschmidt");
-	    new EclipseLinkPortalUserDao().create(user);
+	    EclipseLinkPortalUserDao eclipseLinkPortalUserDao = EclipseLinkPortalUserDao.createInstance();
+	    eclipseLinkPortalUserDao.create(user);
+	    user = eclipseLinkPortalUserDao.getAll().get(0);
 	    System.out.println("User:" + user);
 	}
 
@@ -81,7 +83,7 @@ public class IdeaContainer extends BeanItemContainer<Idea> {
 	}
 
 	// try fetching ideas from the db
-	EclipseLinkIdeaDao eli1 = new EclipseLinkIdeaDao();
+	EclipseLinkIdeaDao eli1 = EclipseLinkIdeaDao.createInstance();
 
 	List<Idea> ideas = null;
 
@@ -123,6 +125,7 @@ public class IdeaContainer extends BeanItemContainer<Idea> {
 		newComment.setText("test");
 		newComment.setTitle("title");
 
+		System.out.println(p);
 		eli1.create(p);
 	    }
 	} catch (InstantiationException e1) {
@@ -132,6 +135,7 @@ public class IdeaContainer extends BeanItemContainer<Idea> {
 	}
 
 	ideas = eli1.getAll();
+	System.out.println(ideas);
 
 	for (Idea idea : ideas) {
 	    c.addItem(idea);

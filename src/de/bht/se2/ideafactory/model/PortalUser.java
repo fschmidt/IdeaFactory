@@ -22,10 +22,10 @@ public class PortalUser {
     private String name;
     private String password;
 
-    @OneToMany(cascade = CascadeType.ALL, targetEntity = Idea.class)
+    @OneToMany(targetEntity = Idea.class)
     private List<Idea> ideas = new ArrayList<Idea>();
 
-    @OneToMany(cascade = CascadeType.ALL, targetEntity = Comment.class)
+    @OneToMany(targetEntity = Comment.class)
     private List<Comment> comments = new ArrayList<Comment>();
 
     public Long getId() {

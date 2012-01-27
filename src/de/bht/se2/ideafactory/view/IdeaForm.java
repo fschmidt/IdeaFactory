@@ -76,12 +76,14 @@ public class IdeaForm extends Form implements ClickListener {
 		setItemDataSource(addedItem);
 
 		newIdeaMode = false;
+		
+		app.showListView();
 
 	    } else {
 		app.getDataSource().updateItem(getItemDataSource());
 	    }
 	    setReadOnly(true);
-	    app.showListView();
+	    
 	} else if (source == cancel) {
 	    if (newIdeaMode) {
 		newIdeaMode = false;
@@ -124,14 +126,6 @@ public class IdeaForm extends Form implements ClickListener {
 	cancel.setVisible(!readOnly);
 	comment.setVisible(readOnly);
 	edit.setVisible(readOnly);
-    }
-
-    public void setComment(boolean setComment) {
-	Boolean boo = false;
-	boo = !setComment;
-	saveComment.setVisible(boo);
-	cancelComment.setVisible(boo);
-	area.setVisible(boo);
     }
 
     public void addIdea(PortalUser creator) {

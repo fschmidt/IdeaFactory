@@ -24,7 +24,7 @@ public class Idea {
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN_ID")
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     private PortalUser creator;
 
     private String name;
